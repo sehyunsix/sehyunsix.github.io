@@ -312,7 +312,6 @@ table td {
   font-size: 18px;
   margin-bottom: 15px;
 }
-.profile_image { border-top-left-radius: 50% 50%; border-top-right-radius: 50% 50%; border-bottom-right-radius: 50% 50%; border-bottom-left-radius: 50% 50%; }
 
 .contact-list,
 .social-media-list {
@@ -645,6 +644,13 @@ table td {
 }
 .highlight .il {
   color: #099;
+}
+
+img {
+  border-top-left-radius: 50% 50%;
+  border-top-right-radius: 50% 50%;
+  border-bottom-right-radius: 50% 50%;
+  border-bottom-left-radius: 50% 50%;
 }
 
 /*# sourceMappingURL=main.css.map */
