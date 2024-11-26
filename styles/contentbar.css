@@ -1,0 +1,57 @@
+/* Fake image */
+.fakeimg {
+  background-color: #aaa;
+  width: 100%;
+  padding: 20px;
+}
+
+/* Add a card effect for articles */
+.card {
+
+  background-color: white;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.c1 {
+  float: left;
+  width: 80%;
+
+}
+
+/* Right column */
+.c2 {
+  float: left;
+  width: 20%;
+  padding-left: 20px;
+}
+
+.content-container{
+  width: 80%;  /* 사이드바 없을 때 전체 너비 */
+  height: 100%;
+  display: flex;
+  float:right;
+  clear: both;
+}
+
+.container.sidebar-active .content-container {
+  float: right;
+  width: calc(100% - 250px);
+  margin-right: 20px;
+    transition: transform 1s ease;
+    transform: translateX(5%);
+}
+.container.sidebar-active .c2 {
+  /* float: right; */
+  width: 20%;
+  padding-left: 20px;
+  padding-right: 0%;
+
+}
+
+.container.sidebar-active .c1 {
+  /* float: right; */
+  width: 80%;
+  padding-right: 0%;
+
+}

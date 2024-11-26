@@ -1,53 +1,69 @@
 <!DOCTYPE html>
-<html lang="en-US">
-  <head>
-    <meta charset="utf-8">
+<html>
+<head>
 
-    <title>Number guessing game</title>
+  <link rel="stylesheet" href="./styles/style.css"/>
+  <script src="./scripts/script.js" defer></script>
 
-    <style>
-      html {
-        font-family: sans-serif;
-      }
 
-      body {
-        width: 50%;
-        max-width: 800px;
-        min-width: 480px;
-        margin: 0 auto;
-      }
-
-      .form input[type="number"] {
-        width: 200px;
-      }
-
-      .lastResult {
-        color: white;
-        padding: 3px;
-      }
-
-    </style>
-    <script defer src="./scripts/numbergame.js"></script>
-
-  </head>
-
-  <body>
-    <h1>Number guessing game</h1>
-
-    <p>We have selected a random number between 1 and 100. See if you can guess it in 10 turns or fewer. We'll tell you if your guess was too high or too low.</p>
-
-    <div class="form">
-      <label for="guessField">Enter a guess: </label>
-      <input type="number" min="1" max="100" required id="guessField" class="guessField">
-      <input type="submit" value="Submit guess" class="guessSubmit">
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h2>SEHYUN YUK</h2>
+    </div>
+    <div class="row">
+    <div class="sidebar-container">
+      <div class="sidebar">
+        <nav><ul id='sidebarul'>
+          <li>Home</li>
+          <li>About</li>
+          <li>Portfolio</li>
+          <li>Blog</li>
+          <li>Contact</li>
+      </ul></nav>
+      </div>
+    </div>
+<div class="content-container">
+  <div class="c1">
+    <div class="card">
+      <h2>TITLE HEADING</h2>
+      <h5>Title description, Dec 7, 2017</h5>
+      <div class="fakeimg" style="height:200px;">Image</div>
+      <p>Some text..</p>
+    </div>
+    <div class="card">
+      <h2>TITLE HEADING</h2>
+      <h5>Title description, Sep 2, 2017</h5>
+      <div class="fakeimg" style="height:200px;">Image</div>
+      <p>Some text..</p>
+    </div>
+  </div>
+  <div class="c2">
+    <div class="card">
+      <h2>About Me</h2>
+      <div class="fakeimg" style="height:100px;">Image</div>
+      <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
     </div>
 
-    <div class="resultParas">
-      <p class="guesses"></p>
-      <p class="lastResult"></p>
-      <p class="lowOrHi"></p>
+    <div class="card">
+      <h3>Popular Post</h3>
+      <div class="fakeimg">Image</div><br>
+      <div class="fakeimg">Image</div><br>
+      <div class="fakeimg">Image</div>
     </div>
 
+    <div class="card">
+      <h3>Follow Me</h3>
+      <p>Some text..</p>
+    </div>
+  </div>
+</div>
+</div>
+<div class="footer">
+  <h2>Footer</h2>
+</div>
+</div>
 
-  </body>
+</body>
 </html>

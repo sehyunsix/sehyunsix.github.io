@@ -1,0 +1,49 @@
+
+li{
+  font-size:20px;
+  width: 200px;
+  height: 20px;
+  padding-top:30px;
+  padding-bottom: 30px;
+}
+
+
+.sidebar{
+  float:left;
+  width: 5%;
+  height: 100%;
+  opacity: 0;
+}
+
+.sidebar-container {
+  width: 5%;
+  height: 100%;
+  padding: 20px;
+  margin-top: 20px;
+  transition: width 1s ease;
+  overflow: visible;
+  float: left;
+  clear: both;
+}
+
+
+
+/* 사이드바 활성화 상태 */
+.container.sidebar-active .sidebar-container  {
+  width: 20%;
+  height: 100%;
+  background-color: white;
+
+}
+
+
+.container.sidebar-active .sidebar {
+  width: 10%;
+  height: 100%;
+  background-color: white;
+  opacity: 1;
+}
+
+
+
+
