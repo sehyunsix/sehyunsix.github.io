@@ -1,32 +1,88 @@
-
-li{
-  font-size:20px;
-  width: 200px;
-  height: 20px;
-  padding-top:30px;
-  padding-bottom: 30px;
+li {
+  font-size: 16px;
+  padding: 5px 0;
 }
 
-
-.sidebar{
-  float:left;
-  width: 5%;
-  height: 100%;
-  opacity: 0;
+.sidebar {
+  width: 100%;
 }
 
 .sidebar-container {
-  width: 5%;
-  height: 100%;
+  width: 250px;
+  min-width: 250px;
+  background-color: white;
   padding: 20px;
-  margin-top: 20px;
-  transition: width 1s ease;
-  overflow: visible;
-  float: left;
-  clear: both;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  margin-right: 20px;
 }
 
+/* menu 클래스 스타일 */
+.menu {
+  display: block;
+  padding: 10px 0;
+  color: #333;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 1.1em;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
 
+.menu:hover {
+  color: #4CAF50;
+}
+
+/* 서브메뉴 스타일 */
+.sub-menu {
+  display: none; /* 기본적으로 숨김 */
+  list-style: none;
+  padding-left: 20px;
+  margin: 5px 0 10px 0;
+}
+
+/* menu에 hover했을 때 하위 sub-menu 표시 */
+.menu:hover + .sub-menu,
+.sub-menu:hover {
+  display: block;
+}
+
+.sub-menu li {
+  margin: 8px 0;
+  padding-left: 15px;
+  position: relative;
+}
+
+.sub-menu li::before {
+  content: "•";
+  position: absolute;
+  left: -15px;
+  color: #4CAF50;
+}
+
+.sub-menu a {
+  display: block;
+  padding: 3px 0;
+  color: #666;
+  text-decoration: none;
+  font-size: 0.9em;
+  transition: color 0.3s ease;
+}
+
+.sub-menu a:hover {
+  color: #4CAF50;
+}
+
+#sidebarul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#sidebarul > li {
+  margin-bottom: 15px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #eee;
+}
 
 /* 사이드바 활성화 상태 */
 .container.sidebar-active .sidebar-container  {

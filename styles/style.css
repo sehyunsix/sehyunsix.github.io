@@ -29,17 +29,16 @@ body {
 .container {
   display: flex;
   flex-direction: column;
-  width: 100%;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 
 /* Clear floats after the columns */
 .row   {
-  content: "";
   display: flex;
-  flex-direction: row;
-  clear: both;
+  flex: 1;
+  padding: 20px;
+  gap: 20px;
 }
 
 /* Footer */
@@ -119,35 +118,146 @@ body {
 .sub-menu {
   list-style: none;
   padding-left: 20px;
-  margin: 5px 0;
-  font-size: 0.9em;
+  margin: 5px 0 10px 0;
+  display: block;
 }
 
+/* 부모 메뉴에 마우스 오버시 서브메뉴 표시 */
+/* #sidebarul > li:hover .sub-menu {
+  display: block;
+} */
+
+/* #sidebarul > li:hover .menu {
+  display: block;
+}
+ */
+
 .sub-menu li {
-  margin: 5px 0;
+  margin: 8px 0;
+  padding-left: 15px;
+  position: relative;
+}
+
+.sub-menu li::before {
+  content: "•";
+  position: absolute;
+  left: -15px;
+  color: #4CAF50;
 }
 
 .sub-menu a {
+  display: block;
+  padding: 3px 0;
   color: #666;
   text-decoration: none;
+  font-size: 0.9em;
+  transition: color 0.3s ease;
 }
 
 .sub-menu a:hover {
   color: #4CAF50;
 }
 
+/* 사이드바 컨테이너 스타일 수정 */
+.sidebar-container {
+  width: 250px;
+  min-width: 250px;
+  background-color: white;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  height: 100%;
+  position: static;
+  left: 0;
+  z-index: 1000;
+}
+
+/* 사이드바 내부 스타일 */
+.sidebar {
+  width: 100%;
+  height: 100%;
+  padding-right: 10px;
+}
+
+/* 스크롤바 스타일링 */
+.sidebar::-webkit-scrollbar {
+  width: 5px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 5px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* 메인 메뉴 스타일 */
+#sidebarul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
 #sidebarul > li {
-  margin: 10px 0;
+  margin-bottom: 15px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #eee;
 }
 
 #sidebarul > li > a {
-  font-weight: bold;
+  display: block;
+  padding: 8px 0;
   color: #333;
+  font-weight: bold;
   text-decoration: none;
+  font-size: 1.1em;
 }
 
-#sidebarul > li > a:hover {
-  color: #4CAF50;
+/* 메인 레이아웃 수정 */
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.row {
+  display: flex;
+  flex: 1;
+  padding: 20px;
+  gap: 20px;
+}
+
+/* 사이드바가 활성화될 때 */
+.sidebar-active .sidebar-container {
+  left: 0;
+}
+
+/* 컨텐츠 영역 조정 */
+.content-container {
+  flex: 1;
+  padding: 20px;
+}
+
+/* 사이드바가 활성화될 때 컨텐츠 영역 이동 */
+.sidebar-active .content-container {
+  margin-left: 250px;
+}
+
+/* 반응형 디자인을 위한 미디어 쿼리 */
+@media screen and (max-width: 768px) {
+  .sidebar-active .content-container {
+    margin-left: 0;
+    opacity: 0.7;
+  }
+
+  .sidebar-container {
+    z-index: 1000;
+  }
 }
 
 
