@@ -11,44 +11,75 @@
   <div class="container">
     <div class="header">
       <h2>SEHYUN YUK</h2>
-      <button id="newPostBtn" class="new-post-btn">새 글 작성</button>
     </div>
     <div class="row">
     <div class="sidebar-container">
       <div class="sidebar">
         <nav><ul id='sidebarul'>
-          <li><a href="#algorithm">알고리즘</a></li>
-          <li><a href="#mathematics">수학</a></li>
-          <li><a href="#computer-architecture">컴퓨터구조</a></li>
-          <li><a href="#quantum-computing">양자컴퓨터</a></li>
+          <li>
+            <a href="#algorithm">알고리즘</a>
+            <ul class="sub-menu">
+              <li><a href="#algorithm">퀵소트 구현하기</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#mathematics">수학</a>
+            <ul class="sub-menu">
+              <li><a href="#mathematics">선형대수학 기초</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#computer-architecture">컴퓨터구조</a>
+            <ul class="sub-menu">
+              <li><a href="#computer-architecture">캐시 메모리의 작동원리</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#quantum-computing">양자컴퓨터</a>
+            <ul class="sub-menu">
+              <li><a href="#quantum-computing">양자 얽힘 현상 이해하기</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#etc">기타</a>
+            <ul class="sub-menu">
+              <li><a href="#etc">개발자의 생산성 향상을 위한 팁</a></li>
+            </ul>
+          </li>
         </ul></nav>
       </div>
     </div>
 <div class="content-container">
   <div class="c1">
     <div class="card" id="algorithm">
-      <h2>알고리즘</h2>
+      <h2>퀵소트 구현하기</h2>
       <h5>2024년 3월 20일</h5>
       <div class="fakeimg" style="height:200px;">Image</div>
-      <p>알고리즘 관련 게시물이 여기에 표시됩니다...</p>
+      <p>퀵소트 알고리즘의 구현 방법과 시간복잡도 분석...</p>
     </div>
     <div class="card" id="mathematics">
-      <h2>수학</h2>
+      <h2>선형대수학 기초</h2>
       <h5>2024년 3월 19일</h5>
       <div class="fakeimg" style="height:200px;">Image</div>
-      <p>수학 관련 게시물이 여기에 표시됩니다...</p>
+      <p>행렬과 벡터의 기본 개념 이해하기...</p>
     </div>
     <div class="card" id="computer-architecture">
-      <h2>컴퓨터구조</h2>
+      <h2>캐시 메모리의 작동원리</h2>
       <h5>2024년 3월 18일</h5>
       <div class="fakeimg" style="height:200px;">Image</div>
-      <p>컴퓨터구조 관련 게시물이 여기에 표시됩니다...</p>
+      <p>CPU 캐시 메모리의 구조와 작동방식...</p>
     </div>
     <div class="card" id="quantum-computing">
-      <h2>양자컴퓨터</h2>
+      <h2>양자 얽힘 현상 이해하기</h2>
       <h5>2024년 3월 17일</h5>
       <div class="fakeimg" style="height:200px;">Image</div>
-      <p>양자컴퓨터 관련 게시물이 여기에 표시됩니다...</p>
+      <p>양자 컴퓨팅의 핵심 개념인 양자 얽힘 현상...</p>
+    </div>
+    <div class="card" id="etc">
+      <h2>개발자의 생산성 향상을 위한 팁</h2>
+      <h5>2024년 3월 16일</h5>
+      <div class="fakeimg" style="height:200px;">Image</div>
+      <p>효율적인 코딩을 위한 개발 환경 설정과 도구들...</p>
     </div>
   </div>
   <div class="c2">
@@ -59,15 +90,15 @@
     </div>
 
     <div class="card">
-      <h3>Popular Post</h3>
-      <div class="fakeimg">Image</div><br>
-      <div class="fakeimg">Image</div><br>
-      <div class="fakeimg">Image</div>
+      <h2>새 글 작성</h2>
+      <button id="newPostBtn" class="new-post-btn">글쓰기</button>
     </div>
 
     <div class="card">
-      <h3>Follow Me</h3>
-      <p>Some text..</p>
+      <h3>최근 게시물</h3>
+      <div class="fakeimg">Image</div><br>
+      <div class="fakeimg">Image</div><br>
+      <div class="fakeimg">Image</div>
     </div>
   </div>
 </div>
@@ -98,6 +129,7 @@
           <option value="mathematics">수학</option>
           <option value="computer-architecture">컴퓨터구조</option>
           <option value="quantum-computing">양자컴퓨터</option>
+          <option value="etc">기타</option>
         </select>
       </div>
       <button type="submit">게시하기</button>
