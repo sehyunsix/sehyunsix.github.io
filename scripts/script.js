@@ -52,6 +52,117 @@ document.addEventListener('DOMContentLoaded', function() {
     form.reset();
     modal.style.display = "none";
   }
+
+  // 게시물 데이터 (실제로는 서버에서 가져올 데이터)
+  const posts = {
+    'quicksort': {
+      title: '퀵소트 구현하기',
+      date: '2024년 3월 20일',
+      content: '퀵소트 알고리즘의 구현 방법과 시간복잡도 분석...',
+      category: 'algorithm'
+    },
+    'linear-algebra': {
+      title: '선형대수학 기초',
+      date: '2024년 3월 19일',
+      content: '행렬과 벡터의 기본 개념 이해하기...',
+      category: 'mathematics'
+    },
+    'number-theory': {
+      title: '정수론의 기초와 응용',
+      date: '2024년 3월 19일',
+      content: '소수, 합동식, 디오판토스 방정식 등 정수론의 기초 개념...',
+      category: 'mathematics'
+    },
+    'cache-memory': {
+      title: '캐시 메모리의 작동원리',
+      date: '2024년 3월 18일',
+      content: 'CPU 캐시 메모리의 구조와 작동방식...',
+      category: 'computer-architecture'
+    },
+    'quantum-entanglement': {
+      title: '양자 얽힘 현상 이해하기',
+      date: '2024년 3월 17일',
+      content: '양자 컴퓨팅의 핵심 개념인 양자 얽힘 현상...',
+      category: 'quantum-computing'
+    },
+    'dev-productivity': {
+      title: '개발자의 생산성 향상을 위한 팁',
+      date: '2024년 3월 16일',
+      content: '효율적인 코딩을 위한 개발 환경 설정과 도구들...',
+      category: 'etc'
+    },
+    'guitar-cover': {
+      title: 'Entertainer - Scott Joplin (Guitar Cover)',
+      date: '2024년 3월 21일',
+      content: `
+        <div>
+          <p>Entertainer의 Entertainer를 기타로 커버한 영상입니다.</p>
+          <p>영상 링크: <a href="https://www.youtube.com/watch?v=j3JfDVKhqSA" target="_blank">
+            https://www.youtube.com/watch?v=j3JfDVKhqSA
+          </a></p>
+        </div>
+      `,
+      category: 'etc'
+    }
+  };
+
+  // 게시물 표시 함수
+  function displayPost(postData) {
+    const currentPost = document.getElementById('current-post');
+    currentPost.innerHTML = `
+      <h2>${postData.title}</h2>
+      <h5>${postData.date}</h5>
+      <div class="fakeimg" style="height:200px;">Image</div>
+      <p>${postData.content}</p>
+      <div class="post-actions">
+        <button class="edit-btn">수정하기</button>
+        <button class="delete-btn">삭제하기</button>
+      </div>
+    `;
+
+    // 수정/삭제 버튼 이벤트 리스너 다시 추가
+    setupPostActions();
+  }
+
+  // 수정/삭제 버튼 이벤트 설정 함수
+  function setupPostActions() {
+    const editBtn = document.querySelector('.edit-btn');
+    const deleteBtn = document.querySelector('.delete-btn');
+
+    editBtn.addEventListener('click', function() {
+      const modal = document.getElementById('postModal');
+      const postTitle = document.querySelector('#current-post h2').textContent;
+      const postContent = document.querySelector('#current-post p').textContent;
+
+      document.getElementById('postTitle').value = postTitle;
+      document.getElementById('postContent').value = postContent;
+
+      modal.style.display = "block";
+    });
+
+    deleteBtn.addEventListener('click', function() {
+      if(confirm('정말로 이 게시물을 삭제하시겠습니까?')) {
+        document.getElementById('current-post').remove();
+      }
+    });
+  }
+
+  // 사이드바 메뉴 클릭 이벤트 설정
+  const menuLinks = document.querySelectorAll('.sub-menu a');
+  menuLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      const postTitle = this.textContent;
+      // 게시물 데이터에서 해당 제목의 게시물 찾기
+      const postData = Object.values(posts).find(post => post.title === postTitle);
+      if (postData) {
+        displayPost(postData);
+      }
+    });
+  });
+
+  // 초기 게시물 표시 (예: 첫 번째 게시물)
+  displayPost(posts['number-theory']);
 });
 
 function createPostElement(title, content) {
