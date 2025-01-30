@@ -205,7 +205,7 @@ async function convertMath(content) {
   // 인라인 수식 변환 (\(...\))
   content = await replaceAsync(content, /\\\((.*?)\\\)/g, async (match, tex) => {
     try {
-      const mathML = await MathJax.tex2mmlPromise(tex, {display: true});
+      const mathML = await MathJax.tex2mmlPromise(tex, {display: false});
       return mathML;
     } catch (e) {
       console.error('인라인 수식 변환 오류:', e);
