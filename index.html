@@ -5,6 +5,22 @@
   <link rel="stylesheet" href="./styles/style.css"/>
   <script src="./scripts/script.js" defer></script>
 
+  <!-- MathJax 설정 및 스크립트 추가 -->
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+  </script>
+  <script id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+  </script>
 
 </head>
 <body>

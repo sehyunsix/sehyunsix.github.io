@@ -64,13 +64,30 @@ document.addEventListener('DOMContentLoaded', function() {
     'linear-algebra': {
       title: '선형대수학 기초',
       date: '2024년 3월 19일',
-      content: '행렬과 벡터의 기본 개념 이해하기...',
+      content: `
+        <p>벡터 공간과 행렬의 기본 개념을 알아봅시다.</p>
+        <p>벡터의 내적은 다음과 같이 정의됩니다:</p>
+        <p>$$\\vec{a} \\cdot \\vec{b} = \\sum_{i=1}^n a_i b_i$$</p>
+        <p>행렬식은 다음과 같이 계산됩니다:</p>
+        <p>$$\\det(A) = \\begin{vmatrix}
+          a_{11} & a_{12} \\\\
+          a_{21} & a_{22}
+        \\end{vmatrix} = a_{11}a_{22} - a_{12}a_{21}$$</p>
+      `,
       category: 'mathematics'
     },
     'number-theory': {
       title: '정수론의 기초와 응용',
       date: '2024년 3월 19일',
-      content: '소수, 합동식, 디오판토스 방정식 등 정수론의 기초 개념...',
+      content: `
+        <p>정수론의 기본 개념들을 살펴봅시다.</p>
+        <p>페르마의 소정리:</p>
+        <p>$$a^{p-1} \\equiv 1 \\pmod{p}$$</p>
+        <p>여기서 $$p$$는 소수이고 $$a$$는 $$p$$와 서로소인 정수입니다.</p>
+        <p>디오판토스 방정식의 예:</p>
+        <p>$$ax + by = c$$</p>
+        <p>여기서 $$a$$, $$b$$, $$c$$는 정수이고, 정수해 $$x$$, $$y$$를 찾는 것이 목표입니다.</p>
+      `,
       category: 'mathematics'
     },
     'cache-memory': {
@@ -112,15 +129,20 @@ document.addEventListener('DOMContentLoaded', function() {
     currentPost.innerHTML = `
       <h2>${postData.title}</h2>
       <h5>${postData.date}</h5>
-      <div class="fakeimg" style="height:200px;">Image</div>
-      <p>${postData.content}</p>
+      <div class="content">
+        ${postData.content}
+      </div>
       <div class="post-actions">
         <button class="edit-btn">수정하기</button>
         <button class="delete-btn">삭제하기</button>
       </div>
     `;
 
-    // 수정/삭제 버튼 이벤트 리스너 다시 추가
+    // MathJax 재렌더링
+    if (window.MathJax) {
+      MathJax.typesetPromise();
+    }
+
     setupPostActions();
   }
 
@@ -132,7 +154,7 @@ document.addEventListener('DOMContentLoaded', function() {
     editBtn.addEventListener('click', function() {
       const modal = document.getElementById('postModal');
       const postTitle = document.querySelector('#current-post h2').textContent;
-      const postContent = document.querySelector('#current-post p').textContent;
+      const postContent = document.querySelector('#current-post .content').innerHTML;
 
       document.getElementById('postTitle').value = postTitle;
       document.getElementById('postContent').value = postContent;
