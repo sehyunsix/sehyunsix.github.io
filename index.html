@@ -11,38 +11,50 @@
   <div class="container">
     <div class="header">
       <h2>SEHYUN YUK</h2>
+      <button id="newPostBtn" class="new-post-btn">새 글 작성</button>
     </div>
     <div class="row">
     <div class="sidebar-container">
       <div class="sidebar">
         <nav><ul id='sidebarul'>
-          <li>Home</li>
-          <li>About</li>
-          <li>Portfolio</li>
-          <li>Blog</li>
-          <li>Contact</li>
-      </ul></nav>
+          <li><a href="#algorithm">알고리즘</a></li>
+          <li><a href="#mathematics">수학</a></li>
+          <li><a href="#computer-architecture">컴퓨터구조</a></li>
+          <li><a href="#quantum-computing">양자컴퓨터</a></li>
+        </ul></nav>
       </div>
     </div>
 <div class="content-container">
   <div class="c1">
-    <div class="card">
-      <h2>TITLE HEADING</h2>
-      <h5>Title description, Dec 7, 2017</h5>
+    <div class="card" id="algorithm">
+      <h2>알고리즘</h2>
+      <h5>2024년 3월 20일</h5>
       <div class="fakeimg" style="height:200px;">Image</div>
-      <p>Some text..</p>
+      <p>알고리즘 관련 게시물이 여기에 표시됩니다...</p>
     </div>
-    <div class="card">
-      <h2>TITLE HEADING</h2>
-      <h5>Title description, Sep 2, 2017</h5>
+    <div class="card" id="mathematics">
+      <h2>수학</h2>
+      <h5>2024년 3월 19일</h5>
       <div class="fakeimg" style="height:200px;">Image</div>
-      <p>Some text..</p>
+      <p>수학 관련 게시물이 여기에 표시됩니다...</p>
+    </div>
+    <div class="card" id="computer-architecture">
+      <h2>컴퓨터구조</h2>
+      <h5>2024년 3월 18일</h5>
+      <div class="fakeimg" style="height:200px;">Image</div>
+      <p>컴퓨터구조 관련 게시물이 여기에 표시됩니다...</p>
+    </div>
+    <div class="card" id="quantum-computing">
+      <h2>양자컴퓨터</h2>
+      <h5>2024년 3월 17일</h5>
+      <div class="fakeimg" style="height:200px;">Image</div>
+      <p>양자컴퓨터 관련 게시물이 여기에 표시됩니다...</p>
     </div>
   </div>
   <div class="c2">
     <div class="card">
       <h2>About Me</h2>
-      <div class="fakeimg" style="height:100px;">Image</div>
+      <img src="images/UserPhoto.jpg" alt="Profile Photo" class="profile-img" style="height:100px; width:100%; object-fit: cover;">
       <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
     </div>
 
@@ -63,6 +75,34 @@
 <div class="footer">
   <h2>Footer</h2>
 </div>
+</div>
+
+<!-- 글 작성 모달 -->
+<div id="postModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>새 글 작성</h2>
+    <form id="newPostForm">
+      <div class="form-group">
+        <label for="postTitle">제목:</label>
+        <input type="text" id="postTitle" required>
+      </div>
+      <div class="form-group">
+        <label for="postContent">내용:</label>
+        <textarea id="postContent" required></textarea>
+      </div>
+      <div class="form-group">
+        <label for="postTag">카테고리:</label>
+        <select id="postTag" required>
+          <option value="algorithm">알고리즘</option>
+          <option value="mathematics">수학</option>
+          <option value="computer-architecture">컴퓨터구조</option>
+          <option value="quantum-computing">양자컴퓨터</option>
+        </select>
+      </div>
+      <button type="submit">게시하기</button>
+    </form>
+  </div>
 </div>
 
 </body>
