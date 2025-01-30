@@ -83,10 +83,10 @@ document.addEventListener('DOMContentLoaded', function() {
         <p>정수론의 기본 개념들을 살펴봅시다.</p>
         <p>페르마의 소정리:</p>
         <p>$$a^{p-1} \\equiv 1 \\pmod{p}$$</p>
-        <p>여기서 \(p\)는 소수이고 \(a\)는 \(p\)와 서로소인 정수입니다.</p>
+        <p>여기서 \\( p \\)는 소수이고 \\(a\\)는 \\(p\\)와 서로소인 정수입니다.</p>
         <p>디오판토스 방정식의 예:</p>
         <p>$$ax + by = c$$</p>
-        <p>여기서 \(a\), \(b\), \(c\)는 정수이고, 정수해 \(x\), \(y\)를 찾는 것이 목표입니다.</p>
+        <p>여기서 \\(a\\), \\(b\\), \\(c\\)는 정수이고, 정수해 \\(x\\), \\(y\\)를 찾는 것이 목표입니다.</p>
       `,
       category: 'mathematics'
     },
@@ -124,13 +124,15 @@ document.addEventListener('DOMContentLoaded', function() {
   };
 
   // 게시물 표시 함수
-  function displayPost(postData) {
+  async function displayPost(postData) {
     const currentPost = document.getElementById('current-post');
+    const convertedContent = await convertMath(postData.content);
+
     currentPost.innerHTML = `
       <h2>${postData.title}</h2>
       <h5>${postData.date}</h5>
       <div class="content">
-        ${postData.content}
+        ${convertedContent}
       </div>
       <div class="post-actions">
         <button class="edit-btn">수정하기</button>
@@ -138,12 +140,8 @@ document.addEventListener('DOMContentLoaded', function() {
       </div>
     `;
 
-    // MathJax 재렌더링
-    if (window.MathJax) {
-      MathJax.typesetPromise();
-    }
-
     setupPostActions();
+    MathJax.typesetPromise([currentPost]).catch((err) => console.error('MathJax rendering failed:', err));
   }
 
   // 수정/삭제 버튼 이벤트 설정 함수
@@ -200,5 +198,43 @@ function createPostElement(title, content) {
   `;
 
   return card;
+}
+
+// MathJax 수식 변환 함수 추가
+async function convertMath(content) {
+  // 인라인 수식 변환 (\(...\))
+  content = await replaceAsync(content, /\\\((.*?)\\\)/g, async (match, tex) => {
+    try {
+      const mathML = await MathJax.tex2mmlPromise(tex, {display: true});
+      return mathML;
+    } catch (e) {
+      console.error('인라인 수식 변환 오류:', e);
+      return match;
+    }
+  });
+
+  // 디스플레이 수식 변환 ($$...$$)
+  content = await replaceAsync(content, /\$\$(.*?)\$\$/g, async (match, tex) => {
+    try {
+      const mathML = await MathJax.tex2mmlPromise(tex, {display: true});
+      return mathML;
+    } catch (e) {
+      console.error('디스플레이 수식 변환 오류:', e);
+      return match;
+    }
+  });
+
+  return content;
+}
+
+// 비동기 replace 헬퍼 함수
+async function replaceAsync(str, regex, asyncFn) {
+  const promises = [];
+  str.replace(regex, (match, ...args) => {
+    const promise = asyncFn(match, ...args);
+    promises.push(promise);
+  });
+  const data = await Promise.all(promises);
+  return str.replace(regex, () => data.shift());
 }
 
